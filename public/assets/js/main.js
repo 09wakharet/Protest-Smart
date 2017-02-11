@@ -4,6 +4,7 @@
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 */
 
+
 (function($) {
 
 	skel.breakpoints({
@@ -26,6 +27,18 @@
 				window.setTimeout(function() {
 					$body.removeClass('is-loading');
 				}, 100);
+				var str = '';
+//				function success(pos){
+//					Console.log(pos);
+//					str = ' '+pos.coords.latitude;
+//				}
+//				if (navigator.geolocation) {
+//					str = navigator.geolocation.getCurrentPosition(success);
+//				} 
+//				if (str==='undefined'){
+//					str='';
+//				}
+				document.getElementById('address').value = str;
 			});
 
 		// Fix: Placeholder polyfill.
