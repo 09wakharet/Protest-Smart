@@ -16,28 +16,35 @@
 	});
 
 	$(function() {
-
 		var	$window = $(window),
 			$body = $('body');
 
 		// Disable animations/transitions until the page has loaded.
 			$body.addClass('is-loading');
-
 			$window.on('load', function() {
 				window.setTimeout(function() {
 					$body.removeClass('is-loading');
 				}, 100);
+				
 				var str = '';
+				
+				document.getElementById('submitBtn').addEventListener("click", function(){
+					var address =  document.getElementById("address").value;
+					var geocoder = new google.maps.Geocoder();
+					console.log("reached")
+					geocoder.geocode( { 'address': address}, function(results, status) {
+					  if (status == google.maps.GeocoderStatus.OK) {
+						var latitude = results[0].geometry.location.lat();
+						var longitude = results[0].geometry.location.lng();
+						console.log("inside if")
+						alert("latitude = "+latitude+", longitude = "+longitude);
+					  } 
+					}); 
+				});
+
 //				function success(pos){
 //					Console.log(pos);
 //					str = ' '+pos.coords.latitude;
-//				}
-//				if (navigator.geolocation) {
-//					str = navigator.geolocation.getCurrentPosition(success);
-//				} 
-//				if (str==='undefined'){
-//					str='';
-//				}
 				document.getElementById('address').value = str;
 			});
 
