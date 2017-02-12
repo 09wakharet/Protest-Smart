@@ -46,13 +46,20 @@
 										row.insertCell(j).innerHTML = exampleRows[i][j];
 									}
 								}
+								
+								var str ='';
+								http.get('172.31.59.220:3000', (res) => {
+									str = res;
+								});
+								console.log(str)
+								
 								//TODO problem code here
-								//var EventSearch = require("../facebook-events-by-location");
-								//console.log('reached2');
-								//var es = new EventSearch({
-								//	"lat": longitude,
-								//	"lng": latitude
-								//});
+								var EventSearch = require("../facebook-events-by-location");
+								console.log('reached2');
+								var es = new EventSearch({
+									"lat": longitude,
+									"lng": latitude
+								});
 								
 								//console.log('reached3');
 								//es.search().then(function (events) {
