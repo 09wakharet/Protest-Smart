@@ -37,13 +37,15 @@
 								var longitude = results[0].geometry.location.lng();
 								console.log('reached1');
 
-								var EventSearch = require("facebook-events-by-location");
+								//TODO problem code here
+								var EventSearch = require("facebook-events-by-location-core");
+								console.log('reached2');
 								var es = new EventSearch({
 									"lat": longitude,
 									"lng": latitude
 								});
 								
-								console.log('reached');
+								console.log('reached3');
 								es.search().then(function (events) {
 									console.log(JSON.stringify(events));
 								}).catch(function (error) {
