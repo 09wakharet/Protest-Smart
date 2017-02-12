@@ -48,8 +48,8 @@
 									}
 								}
 								
-								$.get('localhost:3000/events?lat=77&lng=80', (res) => {
-									console.log(res);
+								$.getJSON('localhost:3000/events?lat=77&lng=80', function(data) {
+									console.log(data);
 									alert('we got her');
 								});
 								
