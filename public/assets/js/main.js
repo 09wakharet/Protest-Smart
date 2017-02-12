@@ -40,7 +40,7 @@
 								
 								$.ajax(
 									{
-										url: 'http://localhost/getevents.php',
+										url: '54.174.10.16/Protest-Smart/public/getevents.php',
 										type: 'POST',
 										dataType: 'text',
 										data: {lat: latitude, long: longitude},
