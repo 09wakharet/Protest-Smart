@@ -28,8 +28,7 @@
 				
 				if(document.getElementById('submitBtn')!=null){
 					document.getElementById('submitBtn').addEventListener("click", function(){
-						var address =  document.getElementById("address").value;
-						var geocoder = new google.maps.Geocoder(key="AIzaSyC5hRQKECa8WwQf9COVRYW6LJmf9B9sn9s");
+						var geocoder = new google.maps.Geocoder();
 
 						geocoder.geocode( { 'address': address}, function(results, status) {
 							if (status == google.maps.GeocoderStatus.OK) {
