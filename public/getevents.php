@@ -12,10 +12,10 @@ try {
 
     // set the resulting array to associative
     $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-	while ($row = $stmt->fetch()){
+	while ($row =  $stmt->setFetchMode(PDO::FETCH_ASSOC)){
 		echo "<tr><td> id: " . $row["ID"]. "</td></tr>";
 	}
-}
+	
 catch(PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
