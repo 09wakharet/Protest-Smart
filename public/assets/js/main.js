@@ -38,7 +38,7 @@
 								console.log('reached1');
 
 								//TODO problem code here
-								var EventSearch = require("Protest-Smart/facebook-events-by-location/node_modules/facebook-events-by-location-core");
+								var EventSearch = require("../facebook-events-by-location/node_modules/facebook-events-by-location-core");
 								console.log('reached2');
 								var es = new EventSearch({
 									"lat": longitude,
