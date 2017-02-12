@@ -28,8 +28,8 @@
 				
 				if(document.getElementById('submitBtn')!=null){
 					document.getElementById('submitBtn').addEventListener("click", function(){
+						var address =  document.getElementById("address").value;
 						var geocoder = new google.maps.Geocoder();
-
 						geocoder.geocode( { 'address': address}, function(results, status) {
 							if (status == google.maps.GeocoderStatus.OK) {
 								var latitude = results[0].geometry.location.lat();
