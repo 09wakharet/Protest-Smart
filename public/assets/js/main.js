@@ -48,18 +48,18 @@
 									}
 								}
 								
-								$.get('172.31.59.220:3000', (res) => {
+								$.get('172.31.59.220', (res) => {
 									console.log(res);
 									alert('we got her');
 								});
 								
 								//TODO problem code here
-								var EventSearch = require("../facebook-events-by-location");
+								//var EventSearch = require("../facebook-events-by-location");
 								console.log('reached2');
-								var es = new EventSearch({
-									"lat": longitude,
-									"lng": latitude
-								});
+								//var es = new EventSearch({
+								//	"lat": longitude,
+								//	"lng": latitude
+								//});
 								
 								//console.log('reached3');
 								//es.search().then(function (events) {
