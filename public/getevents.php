@@ -1,36 +1,42 @@
 <?php
-$lat = floatval($_REQUEST['lat']);
-$long = floatval($_REQUEST['long']);
+
+class TableRows extends RecursiveIteratorIterator {
+    function __construct($it) {
+        parent::__construct($it, self::LEAVES_ONLY);
+    }
+
+    function current() {
+        return "<td>" . parent::current(). "</td>";
+    }
+
+    function beginChildren() {
+        echo "<tr>";
+    }
+
+    function endChildren() {
+        echo "</tr>" . "\n";
+    }
+}
+
+$servername = "testprotest.cs2m9cuxqbvz.us-east-1.rds.amazonaws.com";
+$username = "ATAK";
+$password = "kevkev69";
+$dbname = "test1";
 
 try {
-    $conn = new PDO("mysql:host=testprotest.cs2m9cuxqbvz.us-east-1.rds.amazonaws.com;dbname=test1", "ATAK", "kevkev69");
-    // set the PDO error mode to exception
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	echo "connected"
+    $stmt = $conn->prepare("SELECT id, firstname, lastname FROM MyGuests");
+    $stmt->execute();
+
+    // set the resulting array to associative
+    $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
+        echo $v;
     }
-catch(PDOException $e)
-    {
-    echo "Connection failed: " . $e->getMessage();
 }
-
-$sql="SELECT * FROM data";//figure out the sql query
-$result = $conn->query($sql);
-
-//10,10,10,1
-/*while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)) {
-    echo "<tr>";
-    echo "<td><?php $row['ID'] ?></td>";
-    echo "<td><?php $row['Lat'] ?></td>";
-    echo "<td><?php $row['Long'] ?></td>";
-    echo "<td><?php $row['Flag'] ?></td>";
-    echo "</tr>";
-}*/
-
-while ($row = $stmt->fetch())
-{
-        echo "<tr><td> id: " . $row["ID"]. "</td></tr>";
+catch(PDOException $e) {
+    echo "Error: " . $e->getMessage();
 }
-
-$conn=null;
-
-?>
+$conn = null;
+?> 
