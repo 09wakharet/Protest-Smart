@@ -48,7 +48,7 @@
 									}
 								}
 								
-								$.get('localhost:3000', (res) => {
+								$.get('localhost:3000/events?lat=77&lng=80', (res) => {
 									console.log(res);
 									alert('we got her');
 								});
