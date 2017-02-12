@@ -37,20 +37,29 @@
 								var longitude = results[0].geometry.location.lng();
 								console.log('reached1');
 
+								var exampleRows = [['March on Washington','March 17, 2017',13.0,50000],['Counter-Protest','February 25,2017',5.7,540]];
+							
+								//populate rows
+								for ( i =0; i < exampleRows.length; i++){
+									var row = document.getElementById('tablebody').insertRow(-1);
+									for(j=0; j<4;j++){//TODO DONT HARDCODE THE 4
+										row.insertCell(j).innerHTML = exampleRows[i][j];
+									}
+								}
 								//TODO problem code here
-								var EventSearch = require("../facebook-events-by-location");
-								console.log('reached2');
-								var es = new EventSearch({
-									"lat": longitude,
-									"lng": latitude
-								});
+								//var EventSearch = require("../facebook-events-by-location");
+								//console.log('reached2');
+								//var es = new EventSearch({
+								//	"lat": longitude,
+								//	"lng": latitude
+								//});
 								
-								console.log('reached3');
-								es.search().then(function (events) {
-									console.log(JSON.stringify(events));
-								}).catch(function (error) {
-									console.error(JSON.stringify(error));
-								});
+								//console.log('reached3');
+								//es.search().then(function (events) {
+								//	console.log(JSON.stringify(events));
+								//}).catch(function (error) {
+								//	console.error(JSON.stringify(error));
+								//});
 
 								//var formatted = "172.31.59.220:3000/events?lat="+latitude+"&lng="+longitude;
 								//send ajax request
