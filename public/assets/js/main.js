@@ -36,8 +36,8 @@
 								var latitude = results[0].geometry.location.lat();
 								var longitude = results[0].geometry.location.lng();
 								
+								var formatted = "172.31.59.220:3000/events?lat="+latitude+"&lng="+longitude;
 								//send ajax request
-								
 								$.ajax(
 									{
 										url: 'getevents.php',
@@ -53,7 +53,7 @@
 							
 							//cleanup and delete all rows
 							//document.getElementById('tablebody').innerHTML=null;
-								alert("latitude = "+latitude+", longitude = "+longitude);
+								alert(formatted);
 							} //end if
 						}); //end geocoder
 					});//end listenerner
