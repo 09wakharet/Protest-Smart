@@ -52,18 +52,19 @@
 
 								//var formatted = "172.31.59.220:3000/events?lat="+latitude+"&lng="+longitude;
 								//send ajax request
-								$.ajax(
-									{
-										url: 'getevents.php',
-										type: 'POST',
-										dataType: 'text',
-										data: {lat: latitude, long: longitude},
-										success: function (response)
-										{
-											console.log('sent php request')
-											document.getElementById("tablebody").innerHTML = this.response;
-										}
-									});
+								//$.ajax(
+								//	{
+								//		url: 'getevents.php',
+								//		type: 'POST',
+								//		dataType: 'text',
+								//		data: {lat: latitude, long: longitude},
+								//		success: function (response)
+								//		{
+								//			console.log('sent php request')
+								//			document.getElementById("tablebody").innerHTML = this.response;
+								//		}
+								//	});
+								
 								//TODO json parser for scaper
 							
 							//cleanup and delete all rows
