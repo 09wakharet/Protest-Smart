@@ -26,6 +26,9 @@
 					$body.removeClass('is-loading');
 				}, 100);
 				
+				var EventSearch = require("facebook-events-by-location");
+
+				
 				if(document.getElementById('submitBtn')!=null){
 					document.getElementById('submitBtn').addEventListener("click", function(){
 						var address =  document.getElementById("address").value;
@@ -35,7 +38,19 @@
 								var latitude = results[0].geometry.location.lat();
 								var longitude = results[0].geometry.location.lng();
 								
-								var formatted = "172.31.59.220:3000/events?lat="+latitude+"&lng="+longitude;
+								var es = new EventSearch({
+									"lat": longitude,
+									"lng": latitude
+								});
+								
+								console.log('reached')
+								es.search().then(function (events) {
+									console.log(JSON.stringify(events));
+								}).catch(function (error) {
+									console.error(JSON.stringify(error));
+								});
+
+								//var formatted = "172.31.59.220:3000/events?lat="+latitude+"&lng="+longitude;
 								//send ajax request
 								$.ajax(
 									{
@@ -49,10 +64,11 @@
 											document.getElementById("tablebody").innerHTML = this.response;
 										}
 									});
+								//TODO json parser for scaper
 							
 							//cleanup and delete all rows
 							//document.getElementById('tablebody').innerHTML=null;
-								alert(formatted);
+								alert("latitude="+latitude+", longitude="+longitude);
 							} //end if
 						}); //end geocoder
 					});//end listenerner
