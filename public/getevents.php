@@ -6,6 +6,7 @@ try {
     $conn = new PDO("mysql:host=testprotest.cs2m9cuxqbvz.us-east-1.rds.amazonaws.com;dbname=test1", "ATAK", "kevkev69");
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	echo "connected"
     }
 catch(PDOException $e)
     {
