@@ -2,7 +2,6 @@
 $lat = floatval($_REQUEST['lat']);
 $long = floatval($_REQUEST['long']);
 
-
 $con = mysqli_connect('testprotest.cs2m9cuxqbvz.us-east-1.rds.amazonaws.com','ATAK','kevkev69','test1');
 if (!$con) {
     die('Could not connect: ' . mysqli_error($con));
@@ -15,10 +14,10 @@ $result = mysqli_query($con,$sql);
 //10,10,10,1
 while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)) {
     echo "<tr>";
-    echo "<td> . $row['ID'] . </td>";
-    echo "<td> . $row['Lat'] . </td>";
-    echo "<td> . $row['Long'] . </td>";
-    echo "<td> . $row['Flag'] . </td>";
+    echo "<td><?php $row['ID'] ?></td>";
+    echo "<td><?php $row['Lat'] ?></td>";
+    echo "<td><?php $row['Long'] ?></td>";
+    echo "<td><?php $row['Flag'] ?></td>";
     echo "</tr>";
 }
 
