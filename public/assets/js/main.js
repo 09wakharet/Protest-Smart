@@ -36,9 +36,24 @@
 					  if (status == google.maps.GeocoderStatus.OK) {
 						var latitude = results[0].geometry.location.lat();
 						var longitude = results[0].geometry.location.lng();
-						console.log("inside if")
+						//get results from database
+						var exampleRows = [['March on Washington','March 17, 2017',23.0,50],['generic event','generic date',69,69]];
+						
+						//populate rows
+						for ( i =0; i < exampleRows.length; i++){
+							var row = document.getElementById('tablebody').insertRow(-1);
+							for(j=0; j<4;j++){//TODO DONT HARDCODE THE 4
+								row.insertCell(j).innerHTML = exampleRows[i][j];
+							}
+						}
+						
+						//cleanup and delete all rows
+						//document.getElementById('tablebody').innerHTML=null;
+
 						alert("latitude = "+latitude+", longitude = "+longitude);
-					  } 
+						
+
+					  } //end if
 					}); 
 				});
 
