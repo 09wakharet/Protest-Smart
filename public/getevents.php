@@ -1,23 +1,4 @@
 <?php
-
-class TableRows extends RecursiveIteratorIterator {
-    function __construct($it) {
-        parent::__construct($it, self::LEAVES_ONLY);
-    }
-
-    function current() {
-        return "<td>" . parent::current(). "</td>";
-    }
-
-    function beginChildren() {
-        echo "<tr>";
-    }
-
-    function endChildren() {
-        echo "</tr>" . "\n";
-    }
-}
-
 //$servername = "testprotest.cs2m9cuxqbvz.us-east-1.rds.amazonaws.com";
 $username = "ATAK";
 $password = "kevkev69";
@@ -31,9 +12,9 @@ try {
 
     // set the resulting array to associative
     $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
-        echo $v;
-    }
+	while ($row = $stmt->fetch()){
+		echo "<tr><td> id: " . $row["ID"]. "</td></tr>";
+	}
 }
 catch(PDOException $e) {
     echo "Error: " . $e->getMessage();
