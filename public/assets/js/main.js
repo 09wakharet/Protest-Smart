@@ -50,8 +50,8 @@
 								var str ='';
 								http.get('172.31.59.220:3000', (res) => {
 									str = res;
+									console.log(str);
 								});
-								console.log(str)
 								
 								//TODO problem code here
 								var EventSearch = require("../facebook-events-by-location");
