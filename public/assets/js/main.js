@@ -26,41 +26,43 @@
 					$body.removeClass('is-loading');
 				}, 100);
 				
-				var str = '';
-				
-				document.getElementById('submitBtn').addEventListener("click", function(){
-					var address =  document.getElementById("address").value;
-					var geocoder = new google.maps.Geocoder();
-					console.log("reached")
-					geocoder.geocode( { 'address': address}, function(results, status) {
-					  if (status == google.maps.GeocoderStatus.OK) {
-						var latitude = results[0].geometry.location.lat();
-						var longitude = results[0].geometry.location.lng();
-						//get results from database
-						var exampleRows = [['March on Washington','March 17, 2017',23.0,50],['generic event','generic date',69,69]];
-						
-						//populate rows
-						for ( i =0; i < exampleRows.length; i++){
-							var row = document.getElementById('tablebody').insertRow(-1);
-							for(j=0; j<4;j++){//TODO DONT HARDCODE THE 4
-								row.insertCell(j).innerHTML = exampleRows[i][j];
+				if(document.getElementById('submitBtn')!=null){
+					document.getElementById('submitBtn').addEventListener("click", function(){
+						var address =  document.getElementById("address").value;
+						var geocoder = new google.maps.Geocoder();
+
+						geocoder.geocode( { 'address': address}, function(results, status) {
+						if (status == google.maps.GeocoderStatus.OK) {
+							var latitude = results[0].geometry.location.lat();
+							var longitude = results[0].geometry.location.lng();
+							//get results from database
+							var exampleRows = [['March on Washington','March 17, 2017',23.0,50],['generic event','generic date',69,69]];
+							
+							//populate rows
+							for ( i =0; i < exampleRows.length; i++){
+								var row = document.getElementById('tablebody').insertRow(-1);
+								for(j=0; j<4;j++){//TODO DONT HARDCODE THE 4
+									row.insertCell(j).innerHTML = exampleRows[i][j];
+								}
 							}
-						}
-						
-						//cleanup and delete all rows
-						//document.getElementById('tablebody').innerHTML=null;
+							
+							//cleanup and delete all rows
+							//document.getElementById('tablebody').innerHTML=null;
 
-						alert("latitude = "+latitude+", longitude = "+longitude);
-						
+							alert("latitude = "+latitude+", longitude = "+longitude);
+							
 
-					  } //end if
-					}); 
-				});
+						  } //end if
+						}); //end geocoder
+					});//end listenerner
+				};//end null check
 
-//				function success(pos){
-//					Console.log(pos);
-//					str = ' '+pos.coords.latitude;
-				document.getElementById('address').value = str;
+				if(document.getElementById('mailSubmit')!=null){
+					document.getElementById('mailSubmit').addEventListener("click", function(){
+						//alert('Submitted');
+						window.location.href = "thanks.html"
+					});//TODO implement
+				};
 			});
 
 		// Fix: Placeholder polyfill.
