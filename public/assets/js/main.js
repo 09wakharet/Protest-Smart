@@ -1,4 +1,3 @@
-const http = require('http')
 
 /*
 	Introspect by TEMPLATED
@@ -49,10 +48,9 @@ const http = require('http')
 									}
 								}
 								
-								var str ='';
+								const http = require('http');
 								http.get('172.31.59.220:3000', (res) => {
-									str = res;
-									console.log(str);
+									console.log(res);
 								});
 								
 								//TODO problem code here
