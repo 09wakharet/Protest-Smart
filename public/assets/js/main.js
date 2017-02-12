@@ -48,7 +48,7 @@
 									}
 								}
 								
-								$.get('172.31.59.220', (res) => {
+								$.get('172.31.59.220:3000', (res) => {
 									console.log(res);
 									alert('we got her');
 								});
